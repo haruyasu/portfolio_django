@@ -1,7 +1,6 @@
-migrations
-db.sqlite3
 *.pyc
-__ pycache __
+*.swp
+db.sqlite3
+__pycache__
 .DS_Store
-.idea
-*.jade
+staticfiles
