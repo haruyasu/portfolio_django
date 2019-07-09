@@ -1,6 +1,1090 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Haruyasu Kaitori</title>
+
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="loader-container" id="page-loader">
+                <div class="loading-wrapper loading-wrapper-hide">
+                    <div class="loader-animation" id="loader-animation">
+                        <svg class="svg-loader" width="100" height="100">
+                            <circle cx="50" cy="50" r="25" />
+                        </svg>
+                    </div>
+                    <div class="loader-name" id="loader-name">
+                        <!-- <img src="ref/img/logo-negative.png" alt="" /> -->
+                        <svg
+                            width="152"
+                            height="105"
+                            viewBox="0 0 152 105"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M39.104 56.76H23.264V105H8.144C4.88 105 2.72 104.472 1.664 103.416C0.704 102.36 0.224 100.152 0.224 96.792V0.888H18.08C19.616 0.888 20.864 1.416 21.824 2.47201C22.784 3.528 23.264 4.92 23.264 6.648V43.08H39.104V56.76ZM44.864 0.888H59.984C63.248 0.888 65.36 1.416 66.32 2.47201C67.376 3.528 67.904 5.736 67.904 9.09601V105H50.048C48.512 105 47.264 104.472 46.304 103.416C45.344 102.36 44.864 100.968 44.864 99.24V0.888Z"
+                                fill="white"
+                            />
+                            <path
+                                d="M88.5365 0.888H103.657C106.921 0.888 109.033 1.416 109.993 2.47201C111.049 3.528 111.577 5.736 111.577 9.09601V105H96.4565C93.1925 105 91.0325 104.472 89.9765 103.416C89.0165 102.36 88.5365 100.152 88.5365 96.792V0.888ZM127.129 61.944H143.544C146.424 61.944 148.488 62.76 149.736 64.392C150.984 65.928 151.609 68.472 151.609 72.024V105H132.313C130.777 105 129.529 104.472 128.568 103.416C127.608 102.36 127.129 100.968 127.129 99.24V61.944ZM127.561 0.888H144.121C146.905 0.888 148.681 1.416 149.449 2.47201C150.217 3.528 150.601 5.736 150.601 9.09601V39.624C150.601 45.384 149.544 49.704 147.432 52.584C145.416 55.368 141.289 56.76 135.049 56.76H117.337V43.08H123.673C125.4 43.08 126.457 42.792 126.841 42.216C127.321 41.544 127.561 40.44 127.561 38.904V0.888Z"
+                                fill="white"
+                            />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="back-to-top"
+                class="back-to-top back-to-top-hide"
+                data-toggle="tooltip"
+                data-placement="left"
+                title="Back to Top"
+            >
+                <i class="fa fa-angle-up"></i>
+            </div>
+
+            <div class="container">
+                <div class="header">
+                    <nav class="navbar">
+                        <span class="navbar-toggle" id="js-navbar-toggle">
+                            <i class="fa fa-bars"></i>
+                        </span>
+                        <a class="logo" href="index.html">
+                            <!-- <img src="ref/img/logo.png" alt="" /> -->
+                            <svg
+                                width="152"
+                                height="105"
+                                viewBox="0 0 152 105"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M39.104 56.76H23.264V105H8.144C4.88 105 2.72 104.472 1.664 103.416C0.704 102.36 0.224 100.152 0.224 96.792V0.888H18.08C19.616 0.888 20.864 1.416 21.824 2.47201C22.784 3.528 23.264 4.92 23.264 6.648V43.08H39.104V56.76ZM44.864 0.888H59.984C63.248 0.888 65.36 1.416 66.32 2.47201C67.376 3.528 67.904 5.736 67.904 9.09601V105H50.048C48.512 105 47.264 104.472 46.304 103.416C45.344 102.36 44.864 100.968 44.864 99.24V0.888Z"
+                                    fill="#111111"
+                                />
+                                <path
+                                    d="M88.5365 0.888H103.657C106.921 0.888 109.033 1.416 109.993 2.47201C111.049 3.528 111.577 5.736 111.577 9.09601V105H96.4565C93.1925 105 91.0325 104.472 89.9765 103.416C89.0165 102.36 88.5365 100.152 88.5365 96.792V0.888ZM127.129 61.944H143.544C146.424 61.944 148.488 62.76 149.736 64.392C150.984 65.928 151.609 68.472 151.609 72.024V105H132.313C130.777 105 129.529 104.472 128.568 103.416C127.608 102.36 127.129 100.968 127.129 99.24V61.944ZM127.561 0.888H144.121C146.905 0.888 148.681 1.416 149.449 2.47201C150.217 3.528 150.601 5.736 150.601 9.09601V39.624C150.601 45.384 149.544 49.704 147.432 52.584C145.416 55.368 141.289 56.76 135.049 56.76H117.337V43.08H123.673C125.4 43.08 126.457 42.792 126.841 42.216C127.321 41.544 127.561 40.44 127.561 38.904V0.888Z"
+                                    fill="#111111"
+                                />
+                            </svg>
+                        </a>
+                        <div class="nav-main">
+                            <ul class="main-header" id="js-menu">
+                                <li>
+                                    <a href="#home" class="nav-links">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#about" class="nav-links">About</a>
+                                </li>
+                                <li>
+                                    <a href="#portfolio" class="nav-links">Work</a>
+                                </li>
+                                <li>
+                                    <a href="#contact" class="nav-links">Contact</a>
+                                </li>
+                            </ul>
+
+                            <ul class="social-header">
+                                <li>
+                                    <a
+                                        href="https://www.facebook.com/haruyasu11"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Facebook"
+                                        target="_blank"
+                                        ><i class="fa fa-facebook"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.linkedin.com/in/haruyasu-kaitori-1b5436105/"
+                                        data-toggle="tooltip"
+                                        data-placement="bottom"
+                                        title="LinkedIn"
+                                        target="_blank"
+                                        ><i class="fa fa-linkedin"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://github.com/haruyasu"
+                                        data-toggle="tooltip"
+                                        data-placement="bottom"
+                                        title="GitHub"
+                                        target="_blank"
+                                        ><i class="fa fa-github"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://twitter.com/hathle"
+                                        data-toggle="tooltip"
+                                        data-placement="bottom"
+                                        title="Twitter"
+                                        target="_blank"
+                                        ><i class="fa fa-twitter"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.instagram.com/hathle/"
+                                        data-toggle="tooltip"
+                                        data-placement="bottom"
+                                        title="Instagram"
+                                        target="_blank"
+                                        ><i class="fa fa-instagram"></i
+                                    ></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
+                <section class="main-content">
+                    <div class="isotope-filter" id="isotope-filter">
+                        <div class="element element-profile home">
+                            <div class="element-wrapper">
+                                <div class="profile" id="profile">
+                                    <div class="profile-mask">
+                                        <div class="profile-mask-content" id="profile-mask-content">
+                                            <h1 class="profile-title">Haruyasu Kaitori</h1>
+                                            <p class="profile-title2">Freelance Full Stack Web Developer</p>
+                                        </div>
+                                    </div>
+                                    <div class="profile-picture" id="profile-picture">
+                                        <img src="{% static 'img/main.png' %}" class="responsive-image" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-big-content-about about">
+                            <div class="about__wrapper">
+                                <div class="about__box">
+                                    <h2 class="about__title">Profile</h2>
+                                    <div class="profile__wrap">
+                                        <p>
+                                            東京在住のFreelance Full-Stack Web Developerの飼鳥 晴康です。<br />
+                                            大学では数学とプログラミングを専攻。 大手SIerで8年間Software
+                                            Engineerとして車載開発に携わり、複数のプログラミング言語を自在に操る。
+                                            英語は得意ではなかったが、国際カンファレンスに出席することがきっかけで英語を学び、英語の楽しさに目覚める。
+                                            30歳の新たな挑戦として海外に行くことを決意。
+                                            映画好きだったこともあり、カナダのバンクーバーでVFXを学び、モントリオールでハリウッド映画の製作に携わる。
+                                            そして、東京を拠点にして、独立。
+                                            スポーツ大好きで日々のトレーニングはかかせない。
+                                        </p>
+
+                                        <ul class="social">
+                                            <li>
+                                                <a href="https://www.facebook.com/haruyasu11" target="_blank"
+                                                    ><span data-hover="Facebook">Facebook</span></a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="https://www.linkedin.com/in/haruyasu-kaitori-1b5436105/"
+                                                    target="_blank"
+                                                    ><span data-hover="LinkedIn">LinkedIn</span></a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="https://github.com/haruyasu" target="_blank"
+                                                    ><span data-hover="GitHub">GitHub</span></a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="https://twitter.com/hathle" target="_blank"
+                                                    ><span data-hover="Twitter">Twitter</span></a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="https://www.instagram.com/hathle/" target="_blank"
+                                                    ><span data-hover="Instagram">Instagram</span></a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="https://harulog.org/" target="_blank"
+                                                    ><span data-hover="Web Media">Web Media</span></a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="about__box">
+                                    <h2 class="about__title">Experience</h2>
+                                    <div class="about__wrap sep__wrap">
+                                        <div class="desc">
+                                            <p class="desc__title">Full Stack Web Developer<span> - Freelance</span></p>
+                                            <p>Webシステム、WebGL開発</p>
+                                            <p class="location">Tokyo - Japan</p>
+                                        </div>
+                                        <div class="year">
+                                            <p>2019 - Present</p>
+                                        </div>
+                                    </div>
+                                    <div class="about__wrap sep__wrap">
+                                        <div class="desc">
+                                            <p class="desc__title">
+                                                Pipeline Technical Director<span> - Reel FX Animation</span>
+                                            </p>
+                                            <p>3Dツール開発、パイプライン構築</p>
+                                            <p class="location">Montreal - Canada</p>
+                                        </div>
+                                        <div class="year">
+                                            <p>2018 - 2019</p>
+                                        </div>
+                                    </div>
+                                    <div class="about__wrap sep__wrap">
+                                        <div class="desc">
+                                            <p class="desc__title">
+                                                Background Actor<span> - EP Canada Film Services Inc.</span>
+                                            </p>
+                                            <p>映画エキストラ出演 - Death Note (2017 film)</p>
+                                            <p class="location">Vancouver - Canada</p>
+                                        </div>
+                                        <div class="year">
+                                            <p>2016 - 2016</p>
+                                        </div>
+                                    </div>
+                                    <div class="about__wrap sep__wrap">
+                                        <div class="desc">
+                                            <p class="desc__title">Web Developer<span> - Freelance</span></p>
+                                            <p>Web制作、アプリケーション開発</p>
+                                            <p class="location">Nagoya - Japan</p>
+                                        </div>
+                                        <div class="year">
+                                            <p>2014 - 2019</p>
+                                        </div>
+                                    </div>
+                                    <div class="about__wrap sep__wrap">
+                                        <div class="desc">
+                                            <p class="desc__title">
+                                                Software Engineer<span> - Fujisoft Incorporated</span>
+                                            </p>
+                                            <p>組み込み車載プラットフォーム開発</p>
+                                            <p class="location">Nagoya - Japan</p>
+                                        </div>
+                                        <div class="year">
+                                            <p>2008 - 2016</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="about__box">
+                                    <h2 class="about__title">Education</h2>
+                                    <div class="about__wrap sep__wrap">
+                                        <div class="desc">
+                                            <p class="desc__title">
+                                                FX TD Houdini Program<span> - Lost Boys School of Visual Effects</span>
+                                            </p>
+                                            <p class="location">Vancouver - Canada</p>
+                                        </div>
+                                        <div class="year">
+                                            <p>2017 - 2018</p>
+                                        </div>
+                                    </div>
+                                    <div class="about__wrap sep__wrap">
+                                        <div class="desc">
+                                            <p class="desc__title">
+                                                Global English Advanced Course<span> - VGC INTERNATIONAL COLLEGE</span>
+                                            </p>
+                                            <p class="location">Vancouver - Canada</p>
+                                        </div>
+                                        <div class="year">
+                                            <p>2016 - 2016</p>
+                                        </div>
+                                    </div>
+                                    <div class="about__wrap sep__wrap">
+                                        <div class="desc">
+                                            <p class="desc__title">
+                                                Bachelor of Science in Mathematics<span> - Meijo University</span>
+                                            </p>
+                                            <p class="location">Nagoya - Japan</p>
+                                        </div>
+                                        <div class="year">
+                                            <p>2004 - 2008</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="about__box">
+                                    <h2 class="about__title">Software Skills</h2>
+                                    <div class="progress__box">
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Adobe XD</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Photoshop</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Illustrator</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Premiere Pro</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">After Effects</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Lightroom</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Houdini</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="100"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:100%"
+                                                >
+                                                    <span>Expert</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Maya</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Nuke</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Blender</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Unreal Engine</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="50"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:50%"
+                                                >
+                                                    <span>Intermediate</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Unity</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="50"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:50%"
+                                                >
+                                                    <span>Intermediate</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="about__box">
+                                    <h2 class="about__title">Technical Skills</h2>
+                                    <div class="progress__box">
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">HTML</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="100"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:100%"
+                                                >
+                                                    <span>Expert</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">CSS</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="100"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:100%"
+                                                >
+                                                    <span>Expert</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">JavaScript</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">PHP</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Python</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="100"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:100%"
+                                                >
+                                                    <span>Expert</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">Ruby</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">MySQL</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">C</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="100"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:100%"
+                                                >
+                                                    <span>Expert</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">C++</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="75"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:75%"
+                                                >
+                                                    <span>Advanced</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress__wrap">
+                                            <p class="progress__title">C#</p>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar color-1"
+                                                    role="progressbar"
+                                                    aria-valuenow="50"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                    style="width:50%"
+                                                >
+                                                    <span>Intermediate</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-content element-portfolio-filter portfolio design vfx web app All">
+                            <div class="element-wrapper">
+                                <ul class="portfolio-filter-header">
+                                    <li><a href="#All" class="isotope-link">All</a></li>
+                                    <li><a href="#web" class="isotope-link">Web</a></li>
+                                    <li><a href="#app" class="isotope-link">App</a></li>
+                                    <li><a href="#vfx" class="isotope-link">VFX</a></li>
+                                    <li><a href="#design" class="isotope-link">Design</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="element element-content element-services home">
+                            <div class="element-wrapper">
+                                <a href="#web" class="element-box element-box-interative isotope-link">
+                                    <div class="element-box-bg">
+                                        <h2 class="element-box-title"><span>Services</span></h2>
+                                        <span class="element-box-ico"
+                                            ><span class="see-more">Work</span> &nbsp;<i
+                                                class="fa fa-long-arrow-right"
+                                            ></i
+                                        ></span>
+                                        <div class="service-item">
+                                            <div class="service-ico"><img src="{% static 'img/ico3.svg' %}" alt="" /></div>
+                                            <h2 class="service-title">Web Development</h2>
+                                            <div class="service-description">
+                                                <p>
+                                                    HTML / CSS / JavaScript / PHP
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="element element-portfolio-item home portfolio All web">
+                            <div class="element-wrapper">
+                                <div class="portfolio-item">
+                                    <a
+                                        href="single-portfolio.html"
+                                        class="portfolio-thumbnail"
+                                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                                    >
+                                        <div class="portfolio-description-wrapper">
+                                            <div class="portfolio-description">
+                                                <h2 class="portfolio-title">
+                                                    Portfolio for VFX
+                                                    <span class="portfolio-item-ico"
+                                                        ><i class="fa fa-long-arrow-right"></i
+                                                    ></span>
+                                                </h2>
+                                                <span class="see-more">Web</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-portfolio-item home portfolio All web">
+                            <div class="element-wrapper">
+                                <div class="portfolio-item">
+                                    <a
+                                        href="single-portfolio.html"
+                                        class="portfolio-thumbnail"
+                                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                                    >
+                                        <div class="portfolio-description-wrapper">
+                                            <div class="portfolio-description">
+                                                <h2 class="portfolio-title">
+                                                    Portfolio for VFX
+                                                    <span class="portfolio-item-ico"
+                                                        ><i class="fa fa-long-arrow-right"></i
+                                                    ></span>
+                                                </h2>
+                                                <span class="see-more">Web</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-content element-services home">
+                            <div class="element-wrapper">
+                                <a href="#app" class="element-box element-box-interative isotope-link">
+                                    <div class="element-box-bg">
+                                        <h2 class="element-box-title"><span>Services</span></h2>
+                                        <span class="element-box-ico"
+                                            ><span class="see-more">Work</span> &nbsp;<i
+                                                class="fa fa-long-arrow-right"
+                                            ></i
+                                        ></span>
+                                        <div class="service-item">
+                                            <div class="service-ico"><img src="{% static 'img/ico3.svg' %}" alt="" /></div>
+                                            <h2 class="service-title">Application Development</h2>
+                                            <div class="service-description">
+                                                <p>
+                                                    Python / Ruby / C / C++ / C#
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="element element-portfolio-item home portfolio All web">
+                            <div class="element-wrapper">
+                                <div class="portfolio-item">
+                                    <a
+                                        href="single-portfolio.html"
+                                        class="portfolio-thumbnail"
+                                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                                    >
+                                        <div class="portfolio-description-wrapper">
+                                            <div class="portfolio-description">
+                                                <h2 class="portfolio-title">
+                                                    Portfolio for VFX
+                                                    <span class="portfolio-item-ico"
+                                                        ><i class="fa fa-long-arrow-right"></i
+                                                    ></span>
+                                                </h2>
+                                                <span class="see-more">Web</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-portfolio-item1 home portfolio All web">
+                            <div class="element-wrapper">
+                                <div class="portfolio-item">
+                                    <a
+                                        href="single-portfolio.html"
+                                        class="portfolio-thumbnail"
+                                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                                    >
+                                        <div class="portfolio-description-wrapper">
+                                            <div class="portfolio-description">
+                                                <h2 class="portfolio-title">
+                                                    Portfolio for VFX
+                                                    <span class="portfolio-item-ico"
+                                                        ><i class="fa fa-long-arrow-right"></i
+                                                    ></span>
+                                                </h2>
+                                                <span class="see-more">Web</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-portfolio-item home portfolio All web">
+                            <div class="element-wrapper">
+                                <div class="portfolio-item">
+                                    <a
+                                        href="single-portfolio.html"
+                                        class="portfolio-thumbnail"
+                                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                                    >
+                                        <div class="portfolio-description-wrapper">
+                                            <div class="portfolio-description">
+                                                <h2 class="portfolio-title">
+                                                    Portfolio for VFX
+                                                    <span class="portfolio-item-ico"
+                                                        ><i class="fa fa-long-arrow-right"></i
+                                                    ></span>
+                                                </h2>
+                                                <span class="see-more">Web</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-portfolio-item home portfolio All web">
+                            <div class="element-wrapper">
+                                <div class="portfolio-item">
+                                    <a
+                                        href="single-portfolio.html"
+                                        class="portfolio-thumbnail"
+                                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                                    >
+                                        <div class="portfolio-description-wrapper">
+                                            <div class="portfolio-description">
+                                                <h2 class="portfolio-title">
+                                                    Portfolio for VFX
+                                                    <span class="portfolio-item-ico"
+                                                        ><i class="fa fa-long-arrow-right"></i
+                                                    ></span>
+                                                </h2>
+                                                <span class="see-more">Web</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-portfolio-item home portfolio All web">
+                            <div class="element-wrapper">
+                                <div class="portfolio-item">
+                                    <a
+                                        href="single-portfolio.html"
+                                        class="portfolio-thumbnail"
+                                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                                    >
+                                        <div class="portfolio-description-wrapper">
+                                            <div class="portfolio-description">
+                                                <h2 class="portfolio-title">
+                                                    Portfolio for VFX
+                                                    <span class="portfolio-item-ico"
+                                                        ><i class="fa fa-long-arrow-right"></i
+                                                    ></span>
+                                                </h2>
+                                                <span class="see-more">Web</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-content-3 element-services home">
+                            <div class="element-wrapper">
+                                <a href="#vfx" class="element-box element-box-interative isotope-link">
+                                    <div class="element-box-bg">
+                                        <h2 class="element-box-title"><span>Services</span></h2>
+                                        <span class="element-box-ico"
+                                            ><span class="see-more">Work</span> &nbsp;<i
+                                                class="fa fa-long-arrow-right"
+                                            ></i
+                                        ></span>
+                                        <div class="service-item">
+                                            <div class="service-ico"><img src="{% static 'img/ico3.svg' %}" alt="" /></div>
+                                            <h2 class="service-title">VFX Tool Development</h2>
+                                            <div class="service-description">
+                                                <p>
+                                                    Houdini / Maya / Nuke / Blender / Unreal Engine / Unity
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="element element-portfolio-item home portfolio All web">
+                            <div class="element-wrapper">
+                                <div class="portfolio-item">
+                                    <a
+                                        href="single-portfolio.html"
+                                        class="portfolio-thumbnail"
+                                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                                    >
+                                        <div class="portfolio-description-wrapper">
+                                            <div class="portfolio-description">
+                                                <h2 class="portfolio-title">
+                                                    Portfolio for VFX
+                                                    <span class="portfolio-item-ico"
+                                                        ><i class="fa fa-long-arrow-right"></i
+                                                    ></span>
+                                                </h2>
+                                                <span class="see-more">Web</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-portfolio-item home portfolio All web">
+                            <div class="element-wrapper">
+                                <div class="portfolio-item">
+                                    <a
+                                        href="single-portfolio.html"
+                                        class="portfolio-thumbnail"
+                                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                                    >
+                                        <div class="portfolio-description-wrapper">
+                                            <div class="portfolio-description">
+                                                <h2 class="portfolio-title">
+                                                    Portfolio for VFX
+                                                    <span class="portfolio-item-ico"
+                                                        ><i class="fa fa-long-arrow-right"></i
+                                                    ></span>
+                                                </h2>
+                                                <span class="see-more">Web</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="element element-content element-services home">
+                            <div class="element-wrapper">
+                                <a href="#design" class="element-box element-box-interative isotope-link">
+                                    <div class="element-box-bg">
+                                        <h2 class="element-box-title"><span>Services</span></h2>
+                                        <span class="element-box-ico"
+                                            ><span class="see-more">Work</span> <i class="fa fa-long-arrow-right"></i
+                                        ></span>
+                                        <div class="service-item">
+                                            <div class="service-ico"><img src="{% static 'img/ico1.svg' %}" alt="" /></div>
+                                            <h2 class="service-title">Design</h2>
+                                            <div class="service-description">
+                                                <p>
+                                                    Adobe XD / Photoshop / Illustrator
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="element element-big-content-contact element-contact-form contact">
+                            <div class="element-wrapper">
+                                <h2 class="contact__title">Contact me</h2>
+                                <form id="contactForm">
+                                    <div class="form-group">
+                                        <input
+                                            type="text"
+                                            class="form-control required"
+                                            id="name"
+                                            name="name"
+                                            placeholder="Name*"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <input
+                                            type="email"
+                                            class="form-control required"
+                                            id="email"
+                                            name="email"
+                                            placeholder="Email*"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <input
+                                            type="text"
+                                            class="form-control required"
+                                            id="subject"
+                                            name="subject"
+                                            placeholder="Subject*"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea
+                                            class="form-control required"
+                                            name="message"
+                                            id="message"
+                                            placeholder="Message*"
+                                            required
+                                        ></textarea>
+                                    </div>
+                                    <div class="form-group form-send">
+                                        <button class="btn-submit">
+                                            <span>Submit</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="form-result modal-wrap" id="contactSuccess">
+                    <div class="modal-bg"></div>
+                    <div class="modal-content">
+                        <h4 class="modal-title"><i class="fa fa-check-circle"></i> Success!</h4>
+                        <p>Your message has been sent to me.</p>
+                    </div>
+                </div>
+                <div class="form-result modal-wrap" id="contactError">
+                    <div class="modal-bg"></div>
+                    <div class="modal-content">
+                        <h4 class="modal-title"><i class="fa fa-times"></i> Error</h4>
+                        <p>There was an error sending your message.</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer id="footer">
+                <div id="footer-bottom">
+                    <div class="container">
+                        <p class="footer-bottom-text2"><span>© 2019, Haruyasu Kaitori. All Rights Reserved.</span></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+        <script src="https://unpkg.com/isotope-layout@2/dist/isotope.pkgd.min.js"></script>
+
+        <script src="{% static 'js/jquery.ba-bbq.min.js' %}"></script>
+        <script src="{% static 'js/packery-mode.pkgd.min.js' %}"></script>
+
+        <!-- contact -->
+        <!-- <script src="ref/vendor/validate.js"></script> -->
+
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,4 +1123,4 @@
 
     </div>
 </body>
-</html>
+</html> -->
