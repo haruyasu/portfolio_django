@@ -9,6 +9,8 @@ from django.views.generic import (
     TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView)
 
 # Create your views here.
+class HomeView(TemplateView):
+    template_name = 'home.html'
 
 class AboutView(TemplateView):
     template_name = 'about.html'
