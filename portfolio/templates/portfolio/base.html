@@ -31,7 +31,7 @@
                         <span class="navbar-toggle" id="js-navbar-toggle">
                             <i class="fa fa-bars"></i>
                         </span>
-                        <a class="logo" href="{% url 'home' %}">
+                        <a class="logo" href="{% url 'post_list' %}">
                             <svg
                                 width="152"
                                 height="105"
@@ -62,9 +62,6 @@
                                 </li>
                                 <li>
                                     <a href="#contact" class="nav-links">Contact</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'post_list' %}" class="nav-links">List</a>
                                 </li>
 
                                 {% if user.is_authenticated %}
