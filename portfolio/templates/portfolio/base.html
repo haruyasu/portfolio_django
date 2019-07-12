@@ -52,16 +52,16 @@
                         <div class="nav-main">
                             <ul class="main-header" id="js-menu">
                                 <li>
-                                    <a href="#home" class="nav-links">Home</a>
+                                    <a href="{% url 'post_list' %}#home" class="nav-links">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#about" class="nav-links">About</a>
+                                    <a href="{% url 'post_list' %}#about" class="nav-links">About</a>
                                 </li>
                                 <li>
-                                    <a href="#portfolio" class="nav-links">Work</a>
+                                    <a href="{% url 'post_list' %}#portfolio" class="nav-links">Work</a>
                                 </li>
                                 <li>
-                                    <a href="#contact" class="nav-links">Contact</a>
+                                    <a href="{% url 'post_list' %}#contact" class="nav-links">Contact</a>
                                 </li>
 
                                 {% if user.is_authenticated %}
