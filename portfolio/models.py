@@ -10,6 +10,7 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    category = models.CharField(max_length=200, null=True)
     image_list = models.CharField(max_length=500, null=True)
     client = models.CharField(max_length=200, null=True)
     date = models.CharField(max_length=200, null=True)
@@ -18,8 +19,11 @@ class Post(models.Model):
 
     def images(self):
         if self.image_list:
-            return self.image_list.split(",")
-        return
+            image_list = self.image_list.split(",")
+            new_image_list = []
+            for image in image_list:
+                new_image_list.append("/static/img/" + image)
+            return new_image_list
 
     def publish(self):
         self.published_date = timezone.now()

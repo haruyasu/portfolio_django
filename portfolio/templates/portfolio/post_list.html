@@ -44,7 +44,7 @@
         </div>
 
     {% for post in post_list %}
-        <div class="element element-portfolio-item home portfolio All web">
+        <div class="element element-portfolio-item home portfolio All web}">
             <div class="element-wrapper">
                 <div class="portfolio-item">
                     <a
@@ -58,7 +58,7 @@
                                     {{ post.title }}
                                     <span class="portfolio-item-ico"><i class="fa fa-long-arrow-right"></i></span>
                                 </h2>
-                                <span class="see-more">Web</span>
+                                <span class="see-more">{{ post.category }}</span>
                             </div>
                         </div>
                     </a>
