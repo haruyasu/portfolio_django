@@ -19,26 +19,11 @@
         </div>
         <div class="project__section-img">
             <div id="project-single-carousel" class="project-single-carousel owl-carousel">
-
-                <div class="project-single-carousel-item">
-                    <img src="{% static 'img/haruvfx1.png' %}" alt="" />
-                </div>
-                <div class="project-single-carousel-item">
-                    <img src="{% static 'img/haruvfx2.png' %}" alt="" />
-                </div>
-                <div class="project-single-carousel-item">
-                    <img src="{% static 'img/haruvfx3.png' %}" alt="" />
-                </div>
-                <div class="project-single-carousel-item">
-                    <img src="{% static 'img/haruvfx4.png' %}" alt="" />
-                </div>
-                <div class="project-single-carousel-item">
-                    <img src="{% static 'img/haruvfx5.png' %}" alt="" />
-                </div>
-                <div class="project-single-carousel-item">
-                    <img src="{% static 'img/haruvfx6.png' %}" alt="" />
-                </div>
-
+                {% for image in post.images %}
+                    <div class="project-single-carousel-item">
+                        <img src={{ image }} alt="" />
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <div class="project__section-text">
