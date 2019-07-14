@@ -1,3 +1,7 @@
+body {
+    overflow-y: scroll;
+}
+
 .pagination {
     display: flex;
     justify-content: space-between;
@@ -19,24 +23,15 @@
     justify-content: space-evenly;
 }
 
-.postchange__button{
-    display:block;
-    width: 100px;
-    /* height:70px; */
-    /* line-height: 70px; */
-    color: #FFF;
-    text-decoration: none;
-    text-align: center;
-    background-color: #EE6C4D;
-    border-bottom: solid 6px #9e4a06;
-    border-radius: 5px;
+.postchange__publish a,
+.postchange__edit a,
+.postchange__remove a {
+    margin: 10px;
+    color: #111111;
 }
-.postchange__button:hover{
-    background-color: #f9c500;
-    border-bottom: solid 6px #f39800;
-}
-.postchange__button:active {
-    margin-top: 6px;
-    border-bottom: none;
-    transform: translateY(6px);
+
+.postchange__publish a:hover,
+.postchange__edit a:hover,
+.postchange__remove a:hover {
+    color: #EE6C4D;
 }
