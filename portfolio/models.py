@@ -17,6 +17,10 @@ class Post(models.Model):
     skills = models.CharField(max_length=200, null=True)
     demo = models.CharField(max_length=200, null=True)
 
+    def category_upper(self):
+        if self.category:
+            return self.category.upper()
+
     def images(self):
         if self.image_list:
             image_list = self.image_list.split(",")
@@ -34,6 +38,20 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("post_detail", kwargs={'pk':self.pk})
+
+    def get_previous_by_pk(self):
+        queryset = type(self).objects.filter(pk__lt=self.pk).last()
+        if queryset:
+            return queryset
+        else:
+            raise self.DoesNotExist("%s matching query does not exist." % self.__class__._meta.object_name)
+
+    def get_next_by_pk(self):
+        queryset = type(self).objects.filter(pk__gt=self.pk).first()
+        if queryset:
+            return queryset
+        else:
+            raise self.DoesNotExist("%s matching query does not exist." % self.__class__._meta.object_name)
 
     def __str__(self):
         return self.title

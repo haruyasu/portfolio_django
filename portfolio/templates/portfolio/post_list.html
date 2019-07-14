@@ -13,6 +13,35 @@
 </div>
 {% endfor %}
 {% endcomment %}
+
+<div class="loader-container" id="page-loader">
+    <div class="loading-wrapper loading-wrapper-hide">
+        <div class="loader-animation" id="loader-animation">
+            <svg class="svg-loader" width="100" height="100">
+                <circle cx="50" cy="50" r="25" />
+            </svg>
+        </div>
+        <div class="loader-name" id="loader-name">
+            <svg
+                width="152"
+                height="105"
+                viewBox="0 0 152 105"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M39.104 56.76H23.264V105H8.144C4.88 105 2.72 104.472 1.664 103.416C0.704 102.36 0.224 100.152 0.224 96.792V0.888H18.08C19.616 0.888 20.864 1.416 21.824 2.47201C22.784 3.528 23.264 4.92 23.264 6.648V43.08H39.104V56.76ZM44.864 0.888H59.984C63.248 0.888 65.36 1.416 66.32 2.47201C67.376 3.528 67.904 5.736 67.904 9.09601V105H50.048C48.512 105 47.264 104.472 46.304 103.416C45.344 102.36 44.864 100.968 44.864 99.24V0.888Z"
+                    fill="white"
+                />
+                <path
+                    d="M88.5365 0.888H103.657C106.921 0.888 109.033 1.416 109.993 2.47201C111.049 3.528 111.577 5.736 111.577 9.09601V105H96.4565C93.1925 105 91.0325 104.472 89.9765 103.416C89.0165 102.36 88.5365 100.152 88.5365 96.792V0.888ZM127.129 61.944H143.544C146.424 61.944 148.488 62.76 149.736 64.392C150.984 65.928 151.609 68.472 151.609 72.024V105H132.313C130.777 105 129.529 104.472 128.568 103.416C127.608 102.36 127.129 100.968 127.129 99.24V61.944ZM127.561 0.888H144.121C146.905 0.888 148.681 1.416 149.449 2.47201C150.217 3.528 150.601 5.736 150.601 9.09601V39.624C150.601 45.384 149.544 49.704 147.432 52.584C145.416 55.368 141.289 56.76 135.049 56.76H117.337V43.08H123.673C125.4 43.08 126.457 42.792 126.841 42.216C127.321 41.544 127.561 40.44 127.561 38.904V0.888Z"
+                    fill="white"
+                />
+            </svg>
+        </div>
+    </div>
+</div>
+
 <section class="main-content">
     <div class="isotope-filter" id="isotope-filter">
         <div class="element element-profile home">
@@ -44,7 +73,7 @@
         </div>
 
     {% for post in post_list %}
-        <div class="element element-portfolio-item home portfolio All web}">
+        <div class="element element-portfolio-item home portfolio All {{post.category}}">
             <div class="element-wrapper">
                 <div class="portfolio-item">
                     <a
@@ -58,7 +87,7 @@
                                     {{ post.title }}
                                     <span class="portfolio-item-ico"><i class="fa fa-long-arrow-right"></i></span>
                                 </h2>
-                                <span class="see-more">{{ post.category }}</span>
+                                <span class="see-more">{{ post.category_upper }}</span>
                             </div>
                         </div>
                     </a>

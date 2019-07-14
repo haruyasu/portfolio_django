@@ -8,13 +8,21 @@
             <h2>{{ post.title }}</h2>
 
             {% if user.is_authenticated %}
+                <div class="postchange">
+                    <div class="postchange__publish">
+                        {% if not post.published_date %}
+                            <a class="postchange__button" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+                        {% endif %}
+                    </div>
 
-                {% if not post.published_date %}
-                    <a href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-                {% endif %}
-
-                <a href="{% url 'post_edit' pk=post.pk %}">Post Edit</a>
-                <a href="{% url 'post_remove' pk=post.pk %}">Post Remove</a>
+                    <div class="postchange__edit">
+                        <a class="postchange__button" href="{% url 'post_edit' pk=post.pk %}">Edit</a>
+                    </div>
+    
+                    <div class="postchange__remove">
+                        <a class="postchange__button" href="{% url 'post_remove' pk=post.pk %}">Remove</a>
+                    </div>
+                </div>
             {% endif %}
         </div>
         <div class="project__section-img">
@@ -44,6 +52,29 @@
                 <p>
                     {{ post.text | safe | linebreaksbr }}
                 </p>
+                <div class="pagination">
+                    <div class="pagination__prev">
+                        {% with prev=post.get_previous_by_pk %}
+                            {% if prev %}
+                                <a href="{% url 'post_detail' prev.pk %}">
+                                    <i class="fa fa-angle-left"></i>
+                                    Prev
+                                </a>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+
+                    <div class="pagination__next">
+                        {% with next=post.get_next_by_pk %}
+                            {% if next %}
+                                <a href="{% url 'post_detail' next.pk %}">
+                                    Next
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
