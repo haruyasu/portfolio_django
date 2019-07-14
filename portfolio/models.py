@@ -5,12 +5,12 @@ from django.urls import reverse
 # Create your models here.
 
 class Post(models.Model):
-    # author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200, null=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     category = models.CharField(max_length=200, null=True)
+    thumbnail = models.CharField(max_length=200, null=True)
     image_list = models.CharField(max_length=500, null=True, blank = True)
     video = models.CharField(max_length=200, null=True, blank = True)
     client = models.CharField(max_length=200, null=True)
@@ -21,13 +21,17 @@ class Post(models.Model):
     def category_upper(self):
         if self.category:
             return self.category.upper()
+    
+    def get_thumbnail(self):
+        if self.thumbnail:
+            return "/static/img/" + self.category + "/" + self.thumbnail
 
     def images(self):
         if self.image_list:
             image_list = self.image_list.split(",")
             new_image_list = []
             for image in image_list:
-                new_image_list.append("/static/img/" + image)
+                new_image_list.append("/static/img/" + self.category + "/" + image)
             return new_image_list
 
     def publish(self):

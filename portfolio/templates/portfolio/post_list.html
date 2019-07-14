@@ -79,7 +79,7 @@
                     <a
                         href="{% url 'post_detail' pk=post.pk %}"
                         class="portfolio-thumbnail"
-                        style="background-image: url({% static 'img/haruvfx.png' %});"
+                        style="background-image: url({{ post.get_thumbnail }});"
                     >
                         <div class="portfolio-description-wrapper">
                             <div class="portfolio-description">
