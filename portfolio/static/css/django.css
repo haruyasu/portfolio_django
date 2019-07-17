@@ -5,6 +5,7 @@ body {
 .pagination {
     display: flex;
     justify-content: space-between;
+    margin: 20px 0 0 0;
 }
 
 .pagination__prev a,
@@ -69,7 +70,7 @@ body {
     color: inherit;
     font-family: inherit;
     font-size: 1em;
-    height: 100px;
+    /* height: 200px; */
     padding: 0.4em 0.8em;
     width: 100%;
     margin: 5px 0 20px 0;

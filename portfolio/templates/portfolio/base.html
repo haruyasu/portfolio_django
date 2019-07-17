@@ -3,14 +3,44 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Haruyasu Kaitori</title>
 
-        <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            rel="stylesheet"
-        />
+        <!-- Behavioral Meta Data -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Core Meta Data -->
+        <meta name="author" content="Haruyasu Kaitori" />
+        <meta name="description" content="Haruyasu Kaitori Portfolio" />
+        <meta name="keywords" content="portfolio" />
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}" />
+        <link rel="icon" type="image/png" href="{% static 'img/favicon-32x32.png' %}" sizes="32x32" />
+        <link rel="icon" type="image/png" href="{% static 'img/favicon-16x16.png' %}" sizes="16x16" />
+        <link rel="mask-icon" href="{% static 'img/safari-pinned-tab.svg' %}" color="#293241" />
+        <meta name="theme-color" content="#293241" />
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Portfolio" />
+        <meta property="og:url" content="https://django-project-portfolio.herokuapp.com/" />
+        <meta property="og:description" content="Haruyasu Kaitori Portfolio" />
+        <meta property="og:image" content="{% static 'img/preview-image.png' %}" />
+        <meta property="og:locale" content="ja" />
+        <meta property="og:site_name" content="Portfolio" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="Portfolio" />
+        <meta name="twitter:title" content="Portfolio" />
+        <meta name="twitter:description" content="Haruyasu Kaitori Portfolio" />
+        <meta name="twitter:image" content="{% static 'img/preview-image.png' %}" />
+        <meta name="twitter:site" content="@hathle" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <link rel="stylesheet" href="{% static 'css/django.css' %}" />
     </head>
