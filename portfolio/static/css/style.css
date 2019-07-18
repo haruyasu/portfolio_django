@@ -734,7 +734,7 @@ a:focus {
     .element-portfolio-item {
       width: 25%; } }
   .element-portfolio-item .element-wrapper {
-    min-height: 279px; }
+    min-height: 204px; }
 
 .element-portfolio-item1 {
   width: 100%; }
@@ -817,7 +817,7 @@ a:focus {
     background: #EE6C4D;
     text-align: center;
     width: 100%;
-    padding: 25px 15px;
+    padding: 10px 15px;
     margin-bottom: 0;
     text-align: left;
     font-size: 16px;
