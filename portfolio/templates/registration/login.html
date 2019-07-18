@@ -2,17 +2,25 @@
 
 {% block content %}
 
-<h2>Please Login</h2>
+<div class="form-wrapper">
+    <h1>Sign In</h1>
 
-{% if form.errors %}
-    <p>Please try again.</p>
-{% endif %}
+    <div class="form_error">
+        {% if form.errors %}
+            <p>Please try again.</p>
+        {% endif %}
+    </div>
 
-<form action="{% url 'login' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="" value="Login">
-    <input type="hidden" name="next" value="{{next}}">
-</form>
+    <form action="{% url 'login' %}" method="POST">
+        <div class="form-item">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <div class="button-panel">
+            <input type="submit" class="button" value="Sign In">
+        </div>
+        <input type="hidden" name="next" value="{{next}}">
+    </form>
+</div>
 
 {% endblock %}
