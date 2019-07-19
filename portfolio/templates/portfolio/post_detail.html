@@ -49,10 +49,10 @@
                     <li><i class="fa fa-user"></i><span>Client : </span>{{ post.client }}</li>
                     <li><i class="fa fa-calendar"></i><span>Date : </span>{{ post.date }}</li>
                     <li><i class="fa fa-coffee"></i><span>Skills : </span>{{ post.skills }}</li>
-                    <li>
-                        <i class="fa fa-link"></i><span>Demo : </span
-                        ><a href="{{ post.demo }}" target="_blank">Live Link</a>
-                    </li>
+                    {% if post.get_github_url %}
+                        <li><i class="fa fa-github"></i><span>GitHub : </span><a href="{{ post.get_github_url }}" target="_blank">Link</a></li>
+                    {% endif %}
+                    <li><i class="fa fa-link"></i><span>Demo : </span><a href="{{ post.demo }}" target="_blank">Link</a></li>
                 </ul>
             </div>
             <div class="project__section-text-detail">

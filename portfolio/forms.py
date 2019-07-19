@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
 
     class Meta():
         model = Post
-        fields = ('title', 'text', 'category', 'thumbnail', 'image_list', 'video', 'client', 'date', 'skills', 'demo')
+        fields = ('title', 'text', 'category', 'thumbnail', 'image_list', 'video', 'client', 'date', 'skills', 'github', 'demo')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'textinput'}),
@@ -20,6 +20,7 @@ class PostForm(forms.ModelForm):
             'client': forms.TextInput(attrs={'class': 'textinput'}),
             'date': forms.TextInput(attrs={'class': 'textinput'}),
             'skills': forms.TextInput(attrs={'class': 'textinput'}),
+            'github': forms.TextInput(attrs={'class': 'textinput'}),
             'demo': forms.TextInput(attrs={'class': 'textinput'}),
         }
 

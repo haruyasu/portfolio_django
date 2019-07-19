@@ -16,6 +16,7 @@ class Post(models.Model):
     client = models.CharField(max_length=200, null=True)
     date = models.CharField(max_length=200, null=True)
     skills = models.CharField(max_length=200, null=True)
+    github = models.CharField(max_length=200, null=True)
     demo = models.CharField(max_length=200, null=True)
 
     def category_upper(self):
@@ -25,6 +26,12 @@ class Post(models.Model):
     def get_thumbnail(self):
         if self.thumbnail:
             return "/static/img/" + self.category + "/" + self.thumbnail
+
+    def get_github_url(self):
+        if self.github:
+            return "https://github.com/haruyasu/" + self.github
+        else:
+            return
 
     def images(self):
         if self.image_list:
