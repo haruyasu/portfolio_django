@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from portfolio.models import Post, Comment
-from portfolio.forms import PostForm, CommentForm
+from portfolio.forms import PostForm, CommentForm, ContactForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import (
     TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView)
+from django.views.generic.edit import FormView
 
 # Create your views here.
 class AboutView(TemplateView):
@@ -44,6 +45,23 @@ class DraftListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Post.objects.filter(published_date__isnull=True).order_by('created_date')
+
+class ContactFormView(FormView):
+    template_name = 'portfolio/contact_form.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('contact_result')
+
+    def form_valid(self, form):
+        form.send_email()
+        return super().form_valid(form)
+
+class ContactResultView(TemplateView):
+    template_name = 'portfolio/contact_result.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['success'] = "お問い合わせは正常に送信されました。\n\nしばらくお待ち下さい。"
+        return context
 
 #####
 

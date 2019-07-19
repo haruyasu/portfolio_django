@@ -25,7 +25,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'portfolio/templates/portfolio')
 DEBUG = False
 
 ALLOWED_HOSTS = []
-
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Application definition
 

@@ -1,0 +1,19 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+
+<div class="element-big-content-contact element-contact-form contact">
+    <div class="element-wrapper">
+        <h2>Contact me</h2>
+        <form method="POST">
+            <div class="form-group">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <div class="form-group form-send">
+                <button type="submit" class="btn-submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
