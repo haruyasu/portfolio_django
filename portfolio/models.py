@@ -16,7 +16,7 @@ class Post(models.Model):
     client = models.CharField(max_length=200, null=True)
     date = models.CharField(max_length=200, null=True)
     skills = models.CharField(max_length=200, null=True)
-    github = models.CharField(max_length=200, null=True)
+    github = models.CharField(max_length=200, null=True, blank = True)
     demo = models.CharField(max_length=200, null=True)
 
     def category_upper(self):
